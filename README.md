@@ -39,6 +39,13 @@ response
 status-code 201 if everything went well and the new entry for stock was added/updated
 ```
 
+- Check the stock details in H2 in memory database
+
+```bash
+Open the link http://localhost:8080/h2-console
+Just click OK
+```
+
 + get current stock available of a particular product
 
 ```bash
