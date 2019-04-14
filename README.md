@@ -7,7 +7,7 @@ REST APIs to handle stock basic operation.
 ### start the service
 
 ```bash
-git clone https://github.com/vikasjaiswal24/Stock-Management-API.git
+git clone https://github.com/vikasjaiswal24/Stock-Maintenance-API.git
 cd stock-management-api
 mvn clean install
 mvn spring-boot:run
