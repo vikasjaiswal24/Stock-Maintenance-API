@@ -36,6 +36,7 @@ public class StockController {
 	/*
 	 * This method is used to add or update the product into Stock.
 	 */
+	/*
 	@PostMapping(path = "/updateStock", 
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -44,13 +45,21 @@ public class StockController {
 		ProductRequest productRequest = stockMaintenanceService.createOrUpdateStock(product);
 		return new ResponseEntity<>(productRequest, HttpStatus.CREATED);
 	}
+	*/
+
+	@GetMapping(path = "/updateStock")
+	public ResponseEntity<ProductRequest> updateStock() {
+		logger.info("Received GET request for adding/updating stock !!");
+		//ProductRequest productRequest = stockMaintenanceService.createOrUpdateStock(product);
+		return new ResponseEntity<>(null, HttpStatus.CREATED);
+	}
 	
 	/*
 	 * This method is used to get the product details based on the productId.
 	 */
 	@GetMapping(path = "/stock")
 	public ResponseEntity<ProductResponse> getProductbyId(@Valid @NotNull @RequestParam("productId") Integer productId) {
-		logger.info(StockController.class + "Received GET request for productId: " + productId);
+		logger.info("Received GET request for productId: " + productId);
 		ProductResponse productResponse = stockMaintenanceService.getProductbyId(productId);
 
 		if (null != productResponse) {
@@ -65,7 +74,7 @@ public class StockController {
 	 */
 	@GetMapping(path = "/allStock")
 	public List<Product> getAllStock() {
-		logger.info(StockController.class + "Received GET request for all the stocks !!");
+		logger.info("Received GET request for all the stocks !!");
 		List<Product> productList = stockMaintenanceService.getAllStock();
 		return productList;
 	}
