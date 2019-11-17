@@ -16,4 +16,9 @@ public class Constant {
     public static final String ERROR_MSG_FIRST_9_DIGITS = "Incorrect ISBN number, first 9 digits can not be other than [0-9]";
     public static final String ERROR_MSG_LAST_DIGIT = "Incorrect ISBN number, Only the last digit can be [0-9] or 'X'";
     public static final String ERROR_MSG_ID_NOT_VALID = "ID is not valid for the conversion to ISBN number";
+
+    //Others
+    public static final String BOOK_NOT_FOUND = "Book Not Found";
+    public static final String NO_BOOK_AVAILABLE_IN_LIBRARY = "No Book is available in the library";
+    public static final String BOOK_ALREADY_AVAILABLE = "Book is already available in the library";
 }
