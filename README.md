@@ -7,7 +7,7 @@ REST APIs to handle stock basic operation.
 ### start the service
 
 ```bash
-git clone https://github.com/vikasjaiswal24/Stock-Maintenance-API.git
+git clone https://github.com/vikasjaiswal24/stock-management-api.git
 cd stock-management-api
 mvn clean install
 mvn spring-boot:run
@@ -22,7 +22,7 @@ mvn test
 - update stock of a particular product via Postman
 
 ```bash
-POST    http://localhost:8080/coremedia/api/updateStock
+POST    http://localhost:8080/api/updateStock
 
 Request-Body
 
@@ -32,8 +32,6 @@ Request-Body
 	"productId" : "1001",
 	"quantity" : "10"
 }
-
-Note:- Add 3 to 4 products with different product ids. 
 
 response
 status-code 201 if everything went well and the new entry for stock was added/updated
@@ -49,7 +47,7 @@ Just click OK
 + get current stock available of a particular product
 
 ```bash
-GET    http://localhost:8080/coremedia/api/stock?productId=1001
+GET    http://localhost:8080/api/stock?productId=1001
 
 Response-Body
 
@@ -67,7 +65,7 @@ Response-Body
 - get all the stock details
 
 ```bash
-GET    http://localhost:8080/coremedia/api/allStock
+GET    http://localhost:8080/api/allStock
 
 Response-Body
 
