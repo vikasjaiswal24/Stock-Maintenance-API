@@ -18,5 +18,7 @@ public interface StockService {
 	public ProductResponse getProductbyId(Integer productId) throws EntityNotFoundException;
 	
 	public List<Product> getAllStock();
+	
+	public void loadInitialData(List<Product> list);
 
 }

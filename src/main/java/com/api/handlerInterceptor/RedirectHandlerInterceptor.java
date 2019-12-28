@@ -1,20 +1,12 @@
 package com.api.handlerInterceptor;
 
-import com.api.service.StockService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-import com.api.domain.ProductRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
 /**
@@ -29,9 +21,6 @@ public class RedirectHandlerInterceptor extends HandlerInterceptorAdapter {
 
   private static final Logger logger = LoggerFactory.getLogger(RedirectHandlerInterceptor.class);
 
-  @Autowired
-  StockService stockMaintenanceService;
-
   /**
    * This method will get call before the request handler method in Controller.
    * @param request
@@ -43,48 +32,7 @@ public class RedirectHandlerInterceptor extends HandlerInterceptorAdapter {
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
-    logger.info("Inside preHandle() method HandlerInterceptor !!");
-
-    List<ProductRequest> productList = RedirectHandlerInterceptor.createDemoData();
-    for (ProductRequest product : productList) {
-      stockMaintenanceService.createOrUpdateStock(product);
-    }
+    logger.info("Write a logic to perform an action here before the actual handler is executed !!");
     return true;
   }
-
-  public static List<ProductRequest> createDemoData() {
-
-    List<ProductRequest> productList = new ArrayList<>();
-
-    for (int i=9; i>=0; --i) {
-      ProductRequest buildStock = new ProductRequest();
-
-      buildStock.setId("ST201"+String.valueOf(i));
-      buildStock.setTimeStamp(new Date(2010+i, 1, 8, 10, 17, 32 ));
-      //buildStock.setTimeStamp(new Date("2019-01-12T17:52:15.015Z"));
-      buildStock.setProductId(110+i);
-      buildStock.setQuantity(10+i);
-      productList.add(buildStock);
-
-      buildStock.setId("ST201"+String.valueOf(i));
-      buildStock.setTimeStamp(new Date(2010+i, 4, 9, 11, 37, 17 ));
-      buildStock.setProductId(210+i);
-      buildStock.setQuantity(50+i);
-      productList.add(buildStock);
-
-      buildStock.setId("ST201"+String.valueOf(i));
-      buildStock.setTimeStamp(new Date(2010+i, 7, 4, 20, 14, 52 ));
-      buildStock.setProductId(310+i);
-      buildStock.setQuantity(80+i);
-      productList.add(buildStock);
-
-      buildStock.setId("ST201"+String.valueOf(i));
-      buildStock.setTimeStamp(new Date(2010+i, 10, 9, 21, 7, 11 ));
-      buildStock.setProductId(410+i);
-      buildStock.setQuantity(90+i);
-      productList.add(buildStock);
-    }
-    return productList;
-  }
-
 }

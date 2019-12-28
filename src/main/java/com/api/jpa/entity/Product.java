@@ -9,15 +9,10 @@ import javax.persistence.Id;
 @Entity
 public class Product {
 	
-
-	private String stockId;
-	
-	
-	private Date timeStamp;
-	
 	@Id	// Primary key in the database
 	private int productId;
-	
+	private String stockId;	
+	private Date timeStamp;
 	private int quantity;
 	
 	public Product() {

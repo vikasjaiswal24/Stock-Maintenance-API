@@ -40,7 +40,6 @@ public class StockServiceImpl implements StockService {
 		Product product = productRequestToProduct.convert(productRequest);
 		productRepository.save(product);
 		return productRequest;
-		
 	}
 	
 	/**
@@ -54,7 +53,6 @@ public class StockServiceImpl implements StockService {
 			throw new EntityNotFoundException(Constant.PRODUCT_NOT_FOUND);
 		}
 		return productToProductResponse.convert(product);
-		
 	}
 	
 	/**
@@ -68,7 +66,15 @@ public class StockServiceImpl implements StockService {
 			throw new EntityNotFoundException(Constant.PRODUCT_NOT_FOUND);
 		}
 		return productList;
-		
 	}
 	
+	/**
+	 * This method will load the initial data on the application start up.
+	 */
+	public void loadInitialData(List<Product> productList) {
+		
+		if(productList != null) {
+			productRepository.saveAll(productList);
+		}
+	}
 }
