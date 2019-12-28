@@ -31,27 +31,18 @@ public class StockController {
 	private static final Logger logger = LoggerFactory.getLogger(StockController.class);
 	
 	@Autowired
-	StockService stockMaintenanceService;
+	StockService stockService;
 	
 	/*
 	 * This method is used to add or update the product into Stock.
 	 */
-	/*
 	@PostMapping(path = "/updateStock", 
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<ProductRequest> updateStock(@Valid @RequestBody ProductRequest product) {
 		logger.info(StockController.class + "Received POST request for adding/updating stock !!");
-		ProductRequest productRequest = stockMaintenanceService.createOrUpdateStock(product);
+		ProductRequest productRequest = stockService.createOrUpdateStock(product);
 		return new ResponseEntity<>(productRequest, HttpStatus.CREATED);
-	}
-	*/
-
-	@GetMapping(path = "/updateStock")
-	public ResponseEntity<ProductRequest> updateStock() {
-		logger.info("Received GET request for adding/updating stock !!");
-		//ProductRequest productRequest = stockMaintenanceService.createOrUpdateStock(product);
-		return new ResponseEntity<>(null, HttpStatus.CREATED);
 	}
 	
 	/*
@@ -60,7 +51,7 @@ public class StockController {
 	@GetMapping(path = "/stock")
 	public ResponseEntity<ProductResponse> getProductbyId(@Valid @NotNull @RequestParam("productId") Integer productId) {
 		logger.info("Received GET request for productId: " + productId);
-		ProductResponse productResponse = stockMaintenanceService.getProductbyId(productId);
+		ProductResponse productResponse = stockService.getProductbyId(productId);
 
 		if (null != productResponse) {
 			return new ResponseEntity<>(productResponse, HttpStatus.OK);
@@ -75,7 +66,7 @@ public class StockController {
 	@GetMapping(path = "/allStock")
 	public List<Product> getAllStock() {
 		logger.info("Received GET request for all the stocks !!");
-		List<Product> productList = stockMaintenanceService.getAllStock();
+		List<Product> productList = stockService.getAllStock();
 		return productList;
 	}
 
